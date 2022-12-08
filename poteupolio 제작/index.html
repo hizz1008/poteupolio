@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="asset/css/style.css" />
+    <link rel="stylesheet" href="asset/css/reset.css" />
+    <title>trekkINN</title>
+  </head>
+  <body>
+    <div id="wrap">
+
+      <header id="header">
+        <div class="cantanier">
+          <div class="header_contents">
+          <div class="col1">
+            <h1 class="header_logo">
+              <a href="#">
+                <figure>
+                  <img src="./asset/img/page-logo/trekkinn.svg" alt="terkk INN" />
+                  <figcaption class="ir_su">아웃도어매장 by trandeinn</figcaption>
+                </figure>
+              </a>
+            </div>
+
+            <div class="col2">
+              <div class=" header_search ">
+                <input type="search" placeholder="***개의 제품 중에서 검색" action="post">
+              </div>
+            </div>
+
+            <div class="col3">
+              <button class="header_user">
+                <h2 class="ir_su">로그인 및 유저정보</h2>
+                <i class="fa-solid fa-bars bar"></i>
+                <i class="fa-solid fa-circle-user"></i>
+
+                <div class="header_user_info">
+                  <a class="sign-up-btn" href="#">
+                    <div>
+                      <span>
+                        <h3>회원가입</h3>
+                      </span>
+                    </div>
+                  </a>
+                  <a href="#" class="login-btn">
+                    <div>
+                      <span>
+                        <h3>로그인</h3>
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </button>
+              <!-- 로그인 -->
+              <div class="login-wrap hide ">
+                <h4 class="ir_su">로그인 정보</h4>
+                <div class="login-wrap_login">
+                  <div class="login-header ">
+                    <ul>
+                      <li class="btn-left"><a href="#">로그인</a>
+                        <ul>
+                          <li>
+                            <form id="login-form" name="login-form" action="post">
+                              <fieldset>
+                                <legend class="ir_su">로그인 및 관련설정</legend>
+                                <div class="login-content">
+                                  <h5 class="ir_su">로그인 영역</h5>
+                                  <div class="int-area">
+                                    <input type="text" id="user-id" name="user-id"  maxlength="20" placeholder="아이디">
+
+                                  </div>
+                                  <div class="int-area">
+                                    <input type="password" id="user-pw" name="user-pw" maxlength="20" placeholder="비밀번호">
+
+                                  </div>
+                                  <div class="lh_check">
+                                    <input type="checkbox" id="infor_check" class="input_check">
+                                    <label for="infor_check">로그인 상태 유지</label>
+                                    <a href="#"><strong>비밀번호를 잊으셨나요?</strong></a>
+                                  </div>
+                                </div>
+                                <div class="login-footer">
+                                  <div class="btn-area">
+                                    <button type="submit">로그인</button>
+                                    <div class="login-terms">
+                                      <p>데이터 컨트롤러인 Tradeinn Retail Services는 주문을 관리하고 처리하기 위해 데이터를 처리합니다. 귀하는 당사의 개인정보취급방침에 있는 데이터 보호에 대한 추가 및 세부 정보를 참조하여 데이터에 대한 액세스, 수정 및 삭제를 비롯한 기타 권리를 행사할 수 있습니다.</p>
+                                    </div>
+                                  </div>
+                                </div>
+                              </fieldset>
+                            </form>
+                          </li>
+                        </ul>
+                      </li>
+                      <li class="btn-right inactive"><a href="#">회원가입</a></li>
+                      <li class="btn-cencel"><a href="#"><i class="fa-solid fa-xmark"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="sing-up-wrap">
+                  <h4 class="ir_su">회원가입 정보</h4>
+                </div>
+              </div>
+              <div class="dim hide"></div>
+              <!-- 로그인 -->
+
+            </div>
+             <!-- //col3 -->  
+          </div>
+          <!-- //header_contents -->
+        </div>
+
+        <div class="col4">
+          <div class="header-menu">
+            <i class="fa-solid fa-bars"></i>
+            <span>메뉴</span>
+          </div>
+          <div class=" header_search ">
+            <input type="text"  action="post" placeholder="***개의 제품 중에서 검색">
+          </div>
+        </div>
+      </header>
+
+      <nav id="nav_menu">
+        <div class="nav_menu">
+        <ul class=" cantanier nav_menu-ul">
+          <li class="nav_menu-category">
+              <a href="#"><h2>카테고리</h2></a>   
+
+                <div class="nav_menu-category-container">
+                  <div class="row cantanier">
+                  <div>
+                    <h3>신체 보호</h3>
+                    <ul>
+                      <li><a href="#">부대용품</a></li>
+                      <li><a href="#">부품</a></li>
+                      <li><a href="#">선글라스</a></li>
+                      <li><a href="#">스키 고글</a></li>
+                      <li><a href="#">헬멧</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3>전자제품</h3>
+                    <ul>
+                      <li><a href="#">기상관측소</a></li>
+                      <li><a href="#">배터리</a></li>
+                      <li><a href="#">부대용품</a></li>
+                      <li><a href="#">부품</a></li>
+                      <li><a href="#">센서</a></li>
+                      <li><a href="#">스마트 밴드</a></li>
+                      <li><a href="#">시계</a></li>
+                      <li><a href="#">아발란체 무선 송수신기</a></li>
+                      <li><a href="#">액션 카메라</a></li>
+                      <li><a href="#">워키토키</a></li>
+                      <li><a href="#">장치 휴대용</a></li>
+                      <li><a href="#">충전기</a></li>
+                      <li><a href="#">커버 및 상자</a></li>
+                      <li><a href="#">통신</a></li>
+                      <li><a href="#">헤드폰</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3>조명</h3>
+                    <ul>
+                      <li><a href="#">손전등</a></li>
+                      <li><a href="#">액세서리 및 예비 부품</a></li>
+                      <li><a href="#">헤드라이트</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3>침낭</h3>
+                    <ul>
+                      <li><a href="#">매트리스</a></li>
+                      <li><a href="#">베개</a></li>
+                      <li><a href="#">부품 및 액세서리</a></li>
+                      <li><a href="#">악세서리</a></li>
+                      <li><a href="#">압축 주머니</a></li>
+                      <li><a href="#">천막 침낭</a></li>
+                      <li><a href="#">침낭</a></li>
+                      <li><a href="#">펌프</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3>캠핑</h3>
+                    <ul>
+                      <li><a href="#">가구</a></li>
+                      <li><a href="#">도구 및 칼</a></li>
+                      <li><a href="#">망원경</a></li>
+                      <li><a href="#">쌍안경</a></li>
+                      <li><a href="#">연장 코드</a></li>
+                      <li><a href="#">조리도구</a></li>
+                      <li><a href="#">캠핑 스토브</a></li>
+                      <li><a href="#">캠핑 장비</a></li>
+                      <li><a href="#">캠핑 주방</a></li>
+                      <li><a href="#">캠핑 쿨러</a></li>
+                      <li><a href="#">풍선 매트리스</a></li>
+                      <li><a href="#">휴대용 태양 전지 패널</a></li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h3>텐트</h3>
+                    <ul>
+                      <li><a href="#">대피소와 우산</a></li>
+                      <li><a href="#">보호기</a></li>
+                      <li><a href="#">부품 및 액세서리</a></li>
+                      <li><a href="#">차양 및 가리개</a></li>
+                      <li><a href="#">텐트</a></li>
+                    </ul>
+                  </div>
+                </div>
+
+              </div>
+        </li>
+          <li><a href="#"><h2>브랜드</h2></a></li>
+          <li><a href="#"><h2>남자 의복</h2></a></li>
+          <li><a href="#"><h2>여자 의복</h2></a></li>
+          <li><a href="#"><h2>남자 신발</h2></a></li>
+          <li><a href="#"><h2>백팩</h2></a></li>
+          <li><a href="#"><h2>영양물 섭취</h2></a></li>
+          <li><a href="#"><h2>특가!</h2></a></li>
+        </ul>
+      </div>
+      </nav>
+
+      <section id="slide_wrap">
+          <ul class="slide_contanier" >
+            <li>
+              <em><a href="#">지금 쇼핑하기</a></em>
+              <img src="./asset/img/main-slide/columbiapowerLite.jpg" alt="콜롬비아 파워 라이트">
+            </li>
+            <li>
+              <em><a href="#">지금 쇼핑하기</a></em>
+              <img src="./asset/img/main-slide/merrellNo22.jpg" alt="머렐No22">
+            </li>
+            <li>
+              <em><a href="#">지금 쇼핑하기</a></em>
+              <img src="./asset/img/main-slide/petzelNaoRL.jpg" alt="petzelNaoRL">
+            </li>
+          </ul>
+
+            <a href="#" class="prev"><i class="fa-solid fa-chevron-left"></i></a>
+            <a href="#" class="next"><i class="fa-solid fa-chevron-right"></i></a>
+
+      </section>
+
+
+        
+      <section id="info_brand">
+        <div class="info_brand">
+          <ul>
+            <li>
+              <h2 class="ir_su">콜롬비아</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/Columbia-logo.jpg" alt="콜롬비아">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">아디다스</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/Adidas-logo.svg.jpg" alt="콜롬비아">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">오스프리</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/Osprey-logo.jpg" alt="오스프리">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">마무트스포츠그룹</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/mammut-logo.jpg" alt="마무트스포츠그룹">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">노스페이스</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/TheNorthFace-logo.jpg" alt="노스페이스">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">살로몬</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/Salomon-logo.jpg" alt="살로몬">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">블랙다이아몬드 이큅먼트</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/BlackDiamond-logo.jpg" alt="블랙다이아몬드 이큅먼트">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">Petzl</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/Petzl-logo.jpg" alt="Petzl">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">살레와</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/Salewa-logo.jpg" alt="살레와">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">하그로프스</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/Haglofs-logo.jpg" alt="하그로프스">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">La Sportiva</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/LaSportiva-logo.jpg" alt="La Sportiva">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">머렐</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/머렐-logo.jpg" alt="머렐">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">팀버랜드</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/Timberland-logo.jpg" alt="팀버랜드">
+              </a>
+            </li>
+            <li>
+              <h2 class="ir_su">피엘라벤</h2>
+              <a href="#">
+                <img src="./asset/img/brand-logo/피엘라벤-logo.jpg" alt="피엘라벤">
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <main id="main">
+
+      <section id="banner">
+        <div class="banner-container">
+          <div class="banner-container-top">
+            <div class="banner-1">
+              <div class="banner-col1">
+              <a href="#">
+                <h2>배낭 및 가방</h2>
+                <img src="./asset/img/banner/backpack.jpg" alt="배낭 및 가방">
+              </a>  
+              </div>
+            </div>
+            <div class="banner-2">
+              <div class="banner-col2">
+                <a href="#">
+                  <h2>남성의복</h2>
+                  <img src="./asset/img/banner/menswear.jpg" alt="남성의복">  
+                </a>
+              </div>
+              <div class="banner-col3">
+                <a href="#">
+                  <h2>여성의복</h2>
+                  <img src="./asset/img/banner/womenswear.jpg" alt="여성의복">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="M-banner">
+        <div class="M-banner-container">
+          <div class="M-banner-col1">
+            <a href="#">
+              <h2>배낭 및 가방</h2>
+              <img src="./asset/img/banner/backpack.jpg" alt="배낭 및 가방">
+            </a>  
+          </div>
+          <div class="M-banner-col2">
+            <a href="#">
+              <h2>남성의복</h2>
+              <img src="./asset/img/banner/menswear.jpg" alt="남성의복">  
+            </a>
+          </div>
+          <div class="M-banner-col3">
+            <a href="#">
+              <h2>여성의복</h2>
+              <img src="./asset/img/banner/womenswear.jpg" alt="여성의복">  
+            </a>
+          </div>
+        </div>
+      </section>
+
+
+
+
+        <!-- 고객제안슬라이드
+          10개정도 -->
+        <!-- 베스트셀러 -->
+
+
+      </main>
+      <footer></footer>
+    </div>
+    </div>
+    <script src="./asset/javascript/javascript.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script src="https://kit.fontawesome.com/e8e74eadbe.js" crossorigin="anonymous"></script>
+  </body>
+</html>
