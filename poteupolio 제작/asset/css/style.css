@@ -372,7 +372,7 @@
   display: flex;
   overflow: hidden;
 }
-.slide_contanier {
+.slide_container {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -380,13 +380,15 @@
   position: relative;
 
   background-color: #0e0e0e;
+
+  user-select: none;
 }
-.slide_contanier em {
+.slide_container em {
   display: none;
   transition: all 0.3s ease-in;
   box-shadow: 5px 5px 5px #0e0e0e;
 }
-.slide_contanier em a {
+.slide_container em a {
   width: 200px;
   padding: 15px 0;
   text-align: center;
@@ -394,7 +396,7 @@
   color: #0e0e0e;
 }
 
-#slide_wrap:hover .slide_contanier em {
+#slide_wrap:hover .slide_container em {
   position: absolute;
 
   display: flex;
@@ -405,7 +407,7 @@
 
   border-radius: 5px;
 }
-.slide_contanier li {
+.slide_container li {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -415,10 +417,11 @@
 
   width: 100%;
   flex-shrink: 0;
+  user-select: none;
 
   transition: left 0.15s ease-in;
 }
-.slide_contanier li img {
+.slide_container li img {
   object-fit: cover;
   min-height: 230px;
 }
@@ -429,19 +432,16 @@
   font-size: 50px;
   color: #fff;
 }
-.prev i,
-.next i {
-  padding: 100px;
-}
+
 .prev {
   transform: translate(-30%, -50%);
   top: 50%;
-  left: 0%;
+  left: 5%;
 }
 .next {
   transform: translate(30%, -50%);
   top: 50%;
-  right: 0%;
+  right: 5%;
 }
 .slide_pagination {
   display: flex;
@@ -607,14 +607,14 @@
   font-weight: bold;
   color: #0e0e0e;
 }
-.element-slide-contanier {
+.element-slide-container {
   display: flex;
   position: relative;
   left: 0;
   background-color: #fbfbfb;
 }
 
-.element-slide-contanier li {
+.element-slide-container li {
   flex-shrink: 0;
   width: 200px;
   margin-right: 20px;
@@ -623,21 +623,21 @@
   box-shadow: 5px 5px 5px #fbfbfb;
   border-radius: 10px;
 }
-.element-slide-contanier li:last-child {
+.element-slide-container li:last-child {
   margin-right: 0;
 }
-.element-slide-contanier figcaption {
+.element-slide-container figcaption {
   height: 50px;
   text-align: center;
   color: #0e0e0e;
   font-weight: bold;
 }
-.element-slide-contanier del {
+.element-slide-container del {
   padding-right: 10px;
   color: #717171;
   font-size: 13px;
 }
-.element-slide-contanier strong {
+.element-slide-container strong {
   display: block;
   font-size: 13px;
   width: 100%;
@@ -809,12 +809,16 @@
   .banner-2 img {
     height: 190px;
   }
-  .slide_contanier em a {
+  .slide_container em a {
     width: 150px;
     padding: 10px 0;
     text-align: center;
     font-size: 12px;
     color: #0e0e0e;
+  }
+  .prev,
+  .next {
+    display: none;
   }
   .footer {
     flex-direction: column;
