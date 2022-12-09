@@ -67,7 +67,6 @@ function makeClone() {
     slideContanier.appendChild(cloneSlide);
   });
   for (let i = slideItems.length - 1; i >= 0; i--) {
-    console.log(slideItems.length);
     const cloneSlide = slideItems[i].cloneNode(true);
     cloneSlide.classList.add('clone');
     slideContanier.prepend(cloneSlide);
@@ -148,6 +147,18 @@ prev.addEventListener('click', (e) => {
   prevMove();
 });
 
-// window.location.reload();
+// 고객제안 슬라이드
+const elemSlideContanier = document.querySelector('.element-slide-contanier');
+const elemPrev = document.querySelector('.element-prev');
+const elemNext = document.querySelector('.element-next');
 
-// let slideWidht = 100;
+let elemSlideItems = document.querySelectorAll('.element-slide-contanier li');
+
+let elemSlideCount = elemSlideItems.length;
+
+let elemCurrentIndex = 0;
+
+function elemNextMove() {
+  elemCurrentIndex++;
+}
+// //고객제안 슬라이드

@@ -7,20 +7,16 @@
 #nav_menu {
   /* position: absolute;
   z-index: 1; */
-  background-color: #0e0e0e;
+  background-color: #000000;
+  border-top: 1px solid #303030;
 }
 #slide_banner {
 }
 #main {
-  max-width: 1500px;
-  margin: 0 auto;
-  padding: 0 20px;
-  height: 1000vh;
 }
 
 /* //레이아웃 */
-
-.cantanier {
+.container {
   max-width: 1500px;
   margin: 0 auto;
   padding: 0 20px;
@@ -497,16 +493,15 @@
 }
 /* //info brand */
 
+#banner {
+  display: block;
+}
 .banner-container {
   display: flex;
   justify-content: center;
-  height: 820px;
 }
 .banner-container-top {
   display: flex;
-}
-#banner {
-  display: block;
 }
 .banner-container a h2 {
   position: absolute;
@@ -515,11 +510,12 @@
   transform: translate(-50%, -50%);
   color: #fff;
   font-size: 20px;
+  z-index: 1;
 }
 
 .banner-1 {
   display: flex;
-  position: relative;
+
   width: 50%;
 }
 .banner-2 {
@@ -527,15 +523,29 @@
   flex-direction: column;
   width: 50%;
 }
+
 .banner-col1 {
   margin-right: 20px;
 }
 .banner-col2 {
-  position: relative;
   margin-bottom: 20px;
 }
 .banner-col3 {
   position: relative;
+}
+.banner-col1,
+.banner-col2,
+.banner-col3 {
+  position: relative;
+}
+.banner-col1 img,
+.banner-col2 img,
+.banner-col3 img {
+  filter: brightness(100%);
+  transition: all 0.3s ease-in;
+}
+.banner-col3 img {
+  filter: brightness(80%);
 }
 
 .banner-col1 img {
@@ -546,61 +556,186 @@
   height: 400px;
   object-fit: cover;
 }
-/* 모바일 배너 */
-#M-banner {
+.banner-col1:hover p,
+.banner-col2:hover p,
+.banner-col3:hover p {
+  display: block;
+  top: 50%;
+  opacity: 1;
+}
+.banner-col1 p,
+.banner-col2 p,
+.banner-col3 p {
+  display: block;
+
+  position: absolute;
+  width: 80%;
+  left: 50%;
+  top: 60%;
+
+  transform: translate(-50%, -50%);
+
+  text-align: center;
+
+  color: #fff;
+  font-size: 12px;
+  transition: all 0.3s ease-in;
+  opacity: 0;
+}
+.banner-col1:hover img {
+  filter: brightness(50%);
+}
+.banner-col2:hover img {
+  filter: brightness(50%);
+}
+.banner-col3:hover img {
+  filter: brightness(50%);
+}
+.banner-col3 .img-min {
   display: none;
 }
-.M-banner-container {
+/* //banner */
+.element-slides-wrap {
+  overflow: hidden;
+  position: relative;
+  margin-top: 40px;
+}
+.element-slides-wrap h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 15px;
+  font-weight: bold;
+  color: #0e0e0e;
+}
+.element-slide-contanier {
   display: flex;
-  /* flex-direction: column; */
-  align-items: center;
-  justify-content: space-between;
   position: relative;
   left: 0;
-  width: 100%;
+  background-color: #fbfbfb;
 }
-.M-banner-container img {
-  object-fit: cover;
-}
-.M-banner-col1,
-.M-banner-col2,
-.M-banner-col3,
-.M-banner-col4 {
-  position: relative;
-  /* margin-bottom: 20px; */
-}
-.M-banner-col1 {
-  margin-bottom: 20px;
-}
-.M-banner-col3 {
-  margin-left: 20px;
-}
-.M-banner-container h2 {
-  position: absolute;
-  left: 50%;
-  top: 80%;
-  transform: translate(-50%, -50%);
-  color: #fff;
-  font-size: 15px;
-}
-/* //모바일 배너 */
 
+.element-slide-contanier li {
+  flex-shrink: 0;
+  width: 200px;
+  margin-right: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+  box-shadow: 5px 5px 5px #fbfbfb;
+  border-radius: 10px;
+}
+.element-slide-contanier li:last-child {
+  margin-right: 0;
+}
+.element-slide-contanier figcaption {
+  height: 50px;
+  text-align: center;
+  color: #0e0e0e;
+  font-weight: bold;
+}
+.element-slide-contanier del {
+  padding-right: 10px;
+  color: #717171;
+  font-size: 13px;
+}
+.element-slide-contanier strong {
+  display: block;
+  font-size: 13px;
+  width: 100%;
+
+  text-align: center;
+}
+.element-prev,
+.element-next {
+  position: absolute;
+  top: 50%;
+  font-size: 25px;
+  color: #848484;
+}
+.element-prev {
+  left: 0%;
+}
+.element-next {
+  right: 0%;
+}
+
+/* footer */
+#footer {
+  margin-top: 100px;
+
+  color: #fff;
+  background-color: #000000;
+}
+.footer-top {
+  width: 100%;
+  background-color: #2e7a39;
+}
+.footer-top h2 {
+  font-size: 12px;
+  padding-top: 5%;
+  font-weight: bold;
+}
+
+.footer-top p {
+  font-size: 18px;
+  padding: 20px 0;
+  font-weight: bold;
+}
+.footer-top span {
+  display: block;
+  font-size: 18px;
+  padding-bottom: 5%;
+}
+.footer-top span a {
+  background: #fff;
+  width: 170px;
+  display: block;
+  border-radius: 5px;
+  padding: 10px 0;
+  text-align: center;
+  font-weight: bold;
+}
+.footer {
+  padding-top: 30px;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  margin-bottom: 30px;
+}
+.footer h2 {
+  font-size: 15px;
+  font-weight: bold;
+  color: #fff;
+}
+.footer ul li {
+  padding: 5px 0;
+}
+.footer ul li a {
+  color: #fff;
+}
+.footer-bottom {
+  border-top: 1px solid #303030;
+}
+.footer-bottom span {
+  width: 100%;
+  height: 100px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* //footer */
 /* 미디어 쿼리 */
 @media (max-width: 1500px) {
-  .cantanier {
+  .container {
     padding: 0 5%;
   }
   .nav_menu-category-container > div {
     padding: 5%;
   }
 }
-#main {
-  padding: 0 5%;
-}
+
 @media (max-width: 1220px) {
-  .banner-container {
-    height: 600px;
-  }
   .banner-2 img {
     height: 290px;
   }
@@ -668,7 +803,7 @@
   }
 }
 @media (max-width: 768px) {
-  .banner-container {
+  .banner-col1 img {
     height: 400px;
   }
   .banner-2 img {
@@ -681,14 +816,61 @@
     font-size: 12px;
     color: #0e0e0e;
   }
+  .footer {
+    flex-direction: column;
+  }
+  .footer ul {
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 0;
+    overflow: hidden;
+  }
+  .footer ul img {
+    width: 100px;
+    padding: 10px 0;
+  }
+  .footer-bottom span {
+    font-size: 10px;
+  }
 }
 @media (max-width: 600px) {
-  #banner {
+  .login-wrap {
+    width: 300px;
+  }
+  .banner-container-top {
+    flex-direction: column;
+  }
+  .banner-1 {
+    width: 100%;
+  }
+  .banner-2 {
+    flex-direction: row;
+    width: 100%;
+  }
+  .banner-col1 {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+  .banner-col2 {
+    margin-bottom: 0;
+    margin-right: 20px;
+    width: 60%;
+  }
+  .banner-col3 .img-nomal {
     display: none;
   }
-  #M-banner {
+  .banner-col3 .img-min {
     display: block;
   }
+  .footer-top p {
+    font-size: 14px;
+  }
+  .footer-top span a {
+    width: 100%;
+  }
 }
+
 @media (max-width: 480px) {
 }
