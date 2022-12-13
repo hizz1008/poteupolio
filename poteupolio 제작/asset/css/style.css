@@ -328,6 +328,7 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
+  width: 100%;
 }
 
 .nav_menu-category-container div h3 {
@@ -425,6 +426,7 @@
 .slide_container li img {
   object-fit: cover;
   min-height: 230px;
+  width: 100%;
 }
 
 .prev,
