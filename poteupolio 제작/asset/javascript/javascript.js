@@ -226,3 +226,22 @@ slideContainer.addEventListener('touchend', (e) => {
     nextMove();
   }
 });
+<<<<<<< HEAD
+=======
+
+// 고객제안 슬라이드
+const elemSlideContainer = document.querySelector('.element-slide-container');
+const elemPrev = document.querySelector('.element-prev');
+const elemNext = document.querySelector('.element-next');
+
+let elemSlideItems = document.querySelectorAll('.element-slide-container li');
+
+let elemSlideCount = elemSlideItems.length;
+
+let elemCurrentIndex = 0;
+
+function elemNextMove() {
+  elemCurrentIndex++;
+}
+// //고객제안 슬라이드
+>>>>>>> parent of 6745c1a (slide 고객제안 완성)
