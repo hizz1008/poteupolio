@@ -4,7 +4,7 @@ const navMenuCategoryContainer = document.querySelector(
 );
 
 function navOver() {
-  navMenuCategoryContainer.style.height = '450px';
+  navMenuCategoryContainer.style.height = '500px';
 }
 function navOuth() {
   navMenuCategoryContainer.style.height = '0';
@@ -146,96 +146,69 @@ prev.addEventListener('click', (e) => {
 });
 // //자동 슬라이드
 
-// //드래그 슬라이드
-// let stratPoint = 0;
-// let endPoint = 0;
-// //PC 클릭 이벤트
-// slideContainer.addEventListener('mousedown', (e) => {
-//   stratPoint = e.pageX;
-// });
-
-// slideContainer.addEventListener('mouseup', (e) => {
-//   endPoint = e.pageX;
-//   if (stratPoint < endPoint) {
-//     prevMove();
-//   } else if (stratPoint > endPoint) {
-//     nextMove();
-//   }
-// });
-
-// //모바일 터치 이벤트
-// slideContainer.addEventListener('touchstart', (e) => {
-//   stratPoint = e.touches[0].pageX;
-// });
-// slideContainer.addEventListener('thouchend', (e) => {
-//   endPoint = e.changedTouches[0].pageX;
-//   if (stratPoint > endPoint) {
-//     prevMove();
-//   } else if (endPoint > stratPoint) {
-//     nextMove();
-//   }
-// });
-
-let startPoint = 0;
-let endPoint = 0;
-
-// PC 클릭 이벤트 (드래그)
-slideContainer.addEventListener('mousedown', (e) => {
-  e.preventDefault();
-
-  console.log('mousedown', e.pageX);
-  startX = e.offsetX - slideItems.offsetLeft;
-  startPoint = e.pageX; // 마우스 드래그 시작 위치 저장
-});
-
-slideContainer.addEventListener('mouseup', (e) => {
-  e.preventDefault();
-
-  console.log('mouseup', e.pageX);
-
-  endPoint = e.pageX; // 마우스 드래그 끝 위치 저장
-  if (startPoint < endPoint) {
-    // 마우스가 오른쪽으로 드래그 된 경우
-    console.log('prev move');
-    prevMove();
-  } else if (startPoint > endPoint) {
-    // 마우스가 왼쪽으로 드래그 된 경우
-    console.log('next move');
-    nextMove();
-  }
-});
-
-// 모바일 터치 이벤트 (스와이프)
-slideContainer.addEventListener('touchstart', (e) => {
-  console.log('touchstart', e.touches[0].pageX);
-  startPoint = e.touches[0].pageX; // 터치가 시작되는 위치 저장
-});
-slideContainer.addEventListener('touchend', (e) => {
-  console.log('touchend', e.changedTouches[0].pageX);
-  endPoint = e.changedTouches[0].pageX; // 터치가 끝나는 위치 저장
-  if (startPoint < endPoint) {
-    // 오른쪽으로 스와이프 된 경우
-    console.log('prev move');
-    prevMove();
-  } else if (startPoint > endPoint) {
-    // 왼쪽으로 스와이프 된 경우
-    console.log('next move');
-    nextMove();
-  }
-});
-
 // 고객제안 슬라이드
+const elemSlideWrapper = document.querySelector('.element-slides-wrap');
 const elemSlideContainer = document.querySelector('.element-slide-container');
-const elemPrev = document.querySelector('.element-prev');
-const elemNext = document.querySelector('.element-next');
+const elemSlide = document.querySelectorAll('.element-slide-container li');
 
-let elemSlideItems = document.querySelectorAll('.element-slide-container li');
+const BSlideWrapper = document.querySelector('.bast-slides-wrap');
+const BSlideContainer = document.querySelector('.bast-slide-container');
+const BSlide = document.querySelectorAll('.bast-slide-container li');
 
-let elemSlideCount = elemSlideItems.length;
+const elemSlideCount = elemSlide.length;
 
-let elemCurrentIndex = 0;
+function updataWidth(elem, container) {
+  const currentSlide = elem;
+  const slideCount = currentSlide.length;
+  let slideWidth = elem[0].clientWidth;
 
-function elemNextMove() {
-  elemCurrentIndex++;
+  const newWidth = slideWidth * slideCount + 'px';
+
+  container.style.width = newWidth;
 }
+updataWidth(elemSlide, elemSlideContainer);
+updataWidth(BSlide, BSlideContainer);
+
+let pressed = false;
+let startX;
+let x;
+function slide(wrap, container) {
+  wrap.addEventListener('mousedown', (e) => {
+    pressed = true;
+    startX = e.offsetX - container.offsetLeft;
+  });
+  wrap.addEventListener('touchstart', (e) => {
+    pressed = true;
+    startX = e.offsetX - container.offsetLeft;
+  });
+  wrap.addEventListener('mouseenter', () => {});
+  wrap.addEventListener('mouseup', () => {});
+  wrap.addEventListener('mouseup', () => {
+    pressed = false;
+  });
+  wrap.addEventListener('touchend', () => {
+    pressed = false;
+  });
+  wrap.addEventListener('mousemove', (e) => {
+    if (!pressed) return;
+    e.preventDefault();
+    x = e.offsetX;
+
+    container.style.left = `${x - startX}px`;
+    checkboundary();
+  });
+  function checkboundary() {
+    let outer = wrap.getBoundingClientRect();
+    let inner = container.getBoundingClientRect();
+
+    if (parseInt(container.style.left) > 0) {
+      container.style.left = '0px';
+    } else if (inner.right < outer.right) {
+      container.style.left = `-${inner.width - outer.width}px`;
+    }
+  }
+}
+slide(elemSlideWrapper, elemSlideContainer);
+slide(BSlideWrapper, BSlideContainer);
+
 // //고객제안 슬라이드
