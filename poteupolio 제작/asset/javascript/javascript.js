@@ -147,6 +147,7 @@ prev.addEventListener('click', (e) => {
   prevMove();
 });
 <<<<<<< HEAD
+<<<<<<< HEAD
 // //자동 슬라이드
 
 let startPoint = 0;
@@ -214,6 +215,10 @@ function updataWidth(elem, container) {
 =======
 
 // 고객제안 슬라이드
+=======
+
+// 고객제안 슬라이드
+>>>>>>> parent of 5312c30 (slide.js 수정)
 const elemSlideContanier = document.querySelector('.element-slide-contanier');
 const elemPrev = document.querySelector('.element-prev');
 const elemNext = document.querySelector('.element-next');
