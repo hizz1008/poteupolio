@@ -328,7 +328,6 @@
   display: flex;
   justify-content: space-between;
   padding: 20px;
-  width: 100%;
 }
 
 .nav_menu-category-container div h3 {
@@ -375,7 +374,7 @@
   display: flex;
   overflow: hidden;
 }
-.slide_contanier {
+.slide_container {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -383,13 +382,15 @@
   position: relative;
 
   background-color: #0e0e0e;
+
+  user-select: none;
 }
-.slide_contanier em {
+.slide_container em {
   display: none;
   transition: all 0.3s ease-in;
   box-shadow: 5px 5px 5px #0e0e0e;
 }
-.slide_contanier em a {
+.slide_container em a {
   width: 200px;
   padding: 15px 0;
   text-align: center;
@@ -397,7 +398,7 @@
   color: #0e0e0e;
 }
 
-#slide_wrap:hover .slide_contanier em {
+#slide_wrap:hover .slide_container em {
   position: absolute;
 
   display: flex;
@@ -408,7 +409,7 @@
 
   border-radius: 5px;
 }
-.slide_contanier li {
+.slide_container li {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -417,13 +418,13 @@
   left: 0;
 
   flex-shrink: 0;
+  user-select: none;
 
   transition: left 0.15s ease-in;
 }
-.slide_contanier li img {
+.slide_container li img {
   object-fit: cover;
   min-height: 230px;
-  width: 100%;
 }
 
 .prev,
@@ -432,19 +433,16 @@
   font-size: 50px;
   color: #fff;
 }
-.prev i,
-.next i {
-  padding: 100px;
-}
+
 .prev {
   transform: translate(-30%, -50%);
   top: 50%;
-  left: 0%;
+  left: 5%;
 }
 .next {
   transform: translate(30%, -50%);
   top: 50%;
-  right: 0%;
+  right: 5%;
 }
 .slide_pagination {
   display: flex;
@@ -606,9 +604,6 @@
   font-weight: bold;
   color: #0e0e0e;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 #element {
   max-width: 100%;
   overflow: hidden;
@@ -619,36 +614,15 @@
   margin-bottom: 50px;
 }
 .element-slide-container {
-=======
-.element-slide-contanier {
->>>>>>> parent of 5312c30 (slide.js 수정)
-=======
-.element-slide-contanier {
->>>>>>> parent of 5312c30 (slide.js 수정)
-=======
-.element-slide-contanier {
->>>>>>> parent of 5312c30 (slide.js 수정)
   display: flex;
   position: relative;
   left: 0;
   pointer-events: none;
 }
 
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 .element-slide-container li {
   position: relative;
   display: block;
-=======
-.element-slide-contanier li {
->>>>>>> parent of 5312c30 (slide.js 수정)
-=======
-.element-slide-contanier li {
->>>>>>> parent of 5312c30 (slide.js 수정)
-=======
-.element-slide-contanier li {
->>>>>>> parent of 5312c30 (slide.js 수정)
   flex-shrink: 0;
   width: 300px;
 
@@ -656,34 +630,22 @@
   border-radius: 10px;
   pointer-events: none;
 }
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
 
 .element-slide-container li:last-child {
-=======
-.element-slide-contanier li:last-child {
->>>>>>> parent of 5312c30 (slide.js 수정)
-=======
-.element-slide-contanier li:last-child {
->>>>>>> parent of 5312c30 (slide.js 수정)
-=======
-.element-slide-contanier li:last-child {
->>>>>>> parent of 5312c30 (slide.js 수정)
   margin-right: 0;
 }
-.element-slide-contanier figcaption {
+.element-slide-container figcaption {
   height: 50px;
   text-align: center;
   color: #0e0e0e;
   font-weight: bold;
 }
-.element-slide-contanier del {
+.element-slide-container del {
   padding-right: 10px;
   color: #717171;
   font-size: 13px;
 }
-.element-slide-contanier strong {
+.element-slide-container strong {
   display: block;
   font-size: 13px;
   width: 100%;
@@ -909,12 +871,16 @@
   .banner-2 img {
     height: 190px;
   }
-  .slide_contanier em a {
+  .slide_container em a {
     width: 150px;
     padding: 10px 0;
     text-align: center;
     font-size: 12px;
     color: #0e0e0e;
+  }
+  .prev,
+  .next {
+    display: none;
   }
   .footer {
     flex-direction: column;
