@@ -375,7 +375,7 @@
   display: flex;
   overflow: hidden;
 }
-.slide_container {
+.slide_contanier {
   width: 100%;
   display: flex;
   flex-wrap: nowrap;
@@ -383,15 +383,13 @@
   position: relative;
 
   background-color: #0e0e0e;
-
-  user-select: none;
 }
-.slide_container em {
+.slide_contanier em {
   display: none;
   transition: all 0.3s ease-in;
   box-shadow: 5px 5px 5px #0e0e0e;
 }
-.slide_container em a {
+.slide_contanier em a {
   width: 200px;
   padding: 15px 0;
   text-align: center;
@@ -399,7 +397,7 @@
   color: #0e0e0e;
 }
 
-#slide_wrap:hover .slide_container em {
+#slide_wrap:hover .slide_contanier em {
   position: absolute;
 
   display: flex;
@@ -410,7 +408,7 @@
 
   border-radius: 5px;
 }
-.slide_container li {
+.slide_contanier li {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -419,11 +417,10 @@
   left: 0;
 
   flex-shrink: 0;
-  user-select: none;
 
   transition: left 0.15s ease-in;
 }
-.slide_container li img {
+.slide_contanier li img {
   object-fit: cover;
   min-height: 230px;
   width: 100%;
@@ -435,16 +432,19 @@
   font-size: 50px;
   color: #fff;
 }
-
+.prev i,
+.next i {
+  padding: 100px;
+}
 .prev {
   transform: translate(-30%, -50%);
   top: 50%;
-  left: 5%;
+  left: 0%;
 }
 .next {
   transform: translate(30%, -50%);
   top: 50%;
-  right: 5%;
+  right: 0%;
 }
 .slide_pagination {
   display: flex;
@@ -606,6 +606,7 @@
   font-weight: bold;
   color: #0e0e0e;
 }
+<<<<<<< HEAD
 #element {
   max-width: 100%;
   overflow: hidden;
@@ -616,15 +617,22 @@
   margin-bottom: 50px;
 }
 .element-slide-container {
+=======
+.element-slide-contanier {
+>>>>>>> parent of 5312c30 (slide.js 수정)
   display: flex;
   position: relative;
   left: 0;
   pointer-events: none;
 }
 
+<<<<<<< HEAD
 .element-slide-container li {
   position: relative;
   display: block;
+=======
+.element-slide-contanier li {
+>>>>>>> parent of 5312c30 (slide.js 수정)
   flex-shrink: 0;
   width: 300px;
 
@@ -632,22 +640,26 @@
   border-radius: 10px;
   pointer-events: none;
 }
+<<<<<<< HEAD
 
 .element-slide-container li:last-child {
+=======
+.element-slide-contanier li:last-child {
+>>>>>>> parent of 5312c30 (slide.js 수정)
   margin-right: 0;
 }
-.element-slide-container figcaption {
+.element-slide-contanier figcaption {
   height: 50px;
   text-align: center;
   color: #0e0e0e;
   font-weight: bold;
 }
-.element-slide-container del {
+.element-slide-contanier del {
   padding-right: 10px;
   color: #717171;
   font-size: 13px;
 }
-.element-slide-container strong {
+.element-slide-contanier strong {
   display: block;
   font-size: 13px;
   width: 100%;
@@ -873,16 +885,12 @@
   .banner-2 img {
     height: 190px;
   }
-  .slide_container em a {
+  .slide_contanier em a {
     width: 150px;
     padding: 10px 0;
     text-align: center;
     font-size: 12px;
     color: #0e0e0e;
-  }
-  .prev,
-  .next {
-    display: none;
   }
   .footer {
     flex-direction: column;

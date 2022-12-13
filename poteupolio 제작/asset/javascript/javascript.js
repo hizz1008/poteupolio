@@ -47,30 +47,29 @@ cencel.addEventListener('click', (e) => {
 
 // 슬라이드
 
-const slideContainer = document.querySelector('.slide_container'),
-  slideWrap = document.querySelector('#slide_wrap'),
+const slideContanier = document.querySelector('.slide_contanier'),
   prev = document.querySelector('.prev'),
   next = document.querySelector('.next');
 
 makeClone();
 // 슬라이드 너비 구하기
-let slideItems = document.querySelectorAll('.slide_container li');
+let slideItems = document.querySelectorAll('.slide_contanier li');
 
 let slideCount = slideItems.length;
 // 슬라이드 총 개수
 let currentIndex = 0;
 
 function makeClone() {
-  let slideItems = document.querySelectorAll('.slide_container li');
+  let slideItems = document.querySelectorAll('.slide_contanier li');
   slideItems.forEach((i) => {
     const cloneSlide = i.cloneNode(true);
     cloneSlide.classList.add('clone');
-    slideContainer.appendChild(cloneSlide);
+    slideContanier.appendChild(cloneSlide);
   });
   for (let i = slideItems.length - 1; i >= 0; i--) {
     const cloneSlide = slideItems[i].cloneNode(true);
     cloneSlide.classList.add('clone');
-    slideContainer.prepend(cloneSlide);
+    slideContanier.prepend(cloneSlide);
   }
 }
 
@@ -122,13 +121,16 @@ function prevMove() {
 // 자동 슬라이드
 let loopInterval = setInterval(() => {
   nextMove();
+  console.log('dks');
 }, 5000);
 
-slideContainer.addEventListener('mouseover', () => {
+slideContanier.addEventListener('mouseover', () => {
   clearInterval(loopInterval);
+  console.log('오버');
 });
-slideContainer.addEventListener('mouseout', () => {
+slideContanier.addEventListener('mouseout', () => {
   loopInterval = setInterval(() => {
+    console.log('아웃');
     nextMove();
   }, 5000);
 });
@@ -144,6 +146,7 @@ prev.addEventListener('click', (e) => {
   e.preventDefault();
   prevMove();
 });
+<<<<<<< HEAD
 // //자동 슬라이드
 
 let startPoint = 0;
@@ -208,6 +211,22 @@ function updataWidth(elem, container) {
   let slideWidth = elem[0].clientWidth;
   const newWidth = slideWidth * slideCount + 'px';
   container.style.width = newWidth;
+=======
+
+// 고객제안 슬라이드
+const elemSlideContanier = document.querySelector('.element-slide-contanier');
+const elemPrev = document.querySelector('.element-prev');
+const elemNext = document.querySelector('.element-next');
+
+let elemSlideItems = document.querySelectorAll('.element-slide-contanier li');
+
+let elemSlideCount = elemSlideItems.length;
+
+let elemCurrentIndex = 0;
+
+function elemNextMove() {
+  elemCurrentIndex++;
+>>>>>>> parent of 5312c30 (slide.js 수정)
 }
 updataWidth(elemSlide, elemSlideContainer);
 updataWidth(BSlide, BSlideContainer);
