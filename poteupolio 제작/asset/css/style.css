@@ -608,7 +608,6 @@
 }
 #element {
   max-width: 100%;
-  overflow: hidden;
 }
 .element-slides-wrap {
   position: relative;
@@ -616,23 +615,30 @@
   margin-bottom: 50px;
   max-width: 100%;
 }
-.element-slide{
+.element-slide {
   max-width: 1500px;
   margin: 0 auto;
-  padding: 0 100px;
+  padding: 0 50px;
+}
+.elem-slides-view {
+  overflow: hidden;
 }
 .element-slide-container {
   display: flex;
   position: relative;
   left: 0;
   pointer-events: none;
-  transform: translateX(-720px);
+  user-select: none;
+  overflow: visible;
 }
-.element-slide-container::after{
-  content: "";
+.elem-slide-animated {
+  transition: all 0.3s ease-out;
+}
+.element-slides-wrap::after {
+  content: '';
   position: absolute;
   left: 0;
-  top: -10px;
+  top: 50px;
   display: block;
   width: 100%;
   height: 60%;
@@ -641,22 +647,23 @@
   z-index: -5;
 }
 
-.element-slide-container li {
+.element-slide-container a {
   position: relative;
   display: block;
   flex-shrink: 0;
   width: 335px;
 
-  margin:0  10px;
-  box-shadow:inset  5px 5px 5px #fbfbfb;
+  margin-right: 20px;
+  box-shadow: inset 5px 5px 5px #fbfbfb;
   border-radius: 10px;
   pointer-events: none;
+  z-index: 10;
 }
-.element-slide-container li img{
+.element-slide-container li img {
   border-radius: 10px;
 }
 
-.element-slide-container li:first-child{
+.element-slide-container li:first-child {
 }
 .element-slide-container li:last-child {
   margin-right: 0;
@@ -679,25 +686,26 @@
 
   text-align: center;
 }
-.elem-slide-controller{
-
+.elem-slide-controller {
   font-size: 25px;
 }
 .elem-prev,
-.elem-next{
+.elem-next {
   position: absolute;
   top: 50%;
+  z-index: 100;
 }
-.elem-prev{
-  left: 100px;
+.elem-prev {
+  left: 85px;
 }
-.elem-next{
-  right: 100px;
+.elem-next {
+  right: 85px;
 }
 /* //element 슬라이드 */
 
 .bast-slides-wrap {
   position: relative;
+  overflow: hidden;
 }
 
 .bast-slides-wrap h2 {
@@ -819,8 +827,9 @@
   .nav_menu-category-container > div {
     padding: 20px 100px;
   }
-  .element-slide{
+  .element-slide {
     width: 100%;
+    padding: 0 100px;
   }
 }
 
@@ -896,7 +905,6 @@
     padding: 0 50px;
   }
   .col4 {
-
     padding: 0 50px;
   }
 }

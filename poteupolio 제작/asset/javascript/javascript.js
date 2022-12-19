@@ -219,28 +219,69 @@ slideContainer.addEventListener('touchend', (e) => {
 });
 
 // 고객제안 슬라이드
-const elemSlideWrapper = document.querySelector('.element-slides-wrap');
+const elemSlideWrapper = document.querySelector('.elem-slides-view');
 const elemSlideContainer = document.querySelector('.element-slide-container');
 const elemSlide = document.querySelectorAll('.element-slide-container li');
+const elemPrevBtn = document.querySelector('.elem-prev');
+const elemNextBtn = document.querySelector('.elem-next');
 
-const BSlideWrapper = document.querySelector('.bast-slides-wrap');
-const BSlideContainer = document.querySelector('.bast-slide-container');
-const BSlide = document.querySelectorAll('.bast-slide-container li');
-
-const elemSlideCount = elemSlide.length;
+let elemSlideCount = elemSlide.length;
+let elemCurentIndex = 0;
+let slideWidth = elemSlide[0].clientWidth;
+let slideMargin = 20;
 
 // 슬라이드 너비 구하기
 function updataWidth(elem, container) {
   const currentSlide = elem;
   const slideCount = currentSlide.length;
   let slideWidth = elem[0].clientWidth;
-  let slideMargin = 20
+  let slideMargin = 20;
 
-  const newWidth = ((slideWidth + slideMargin) * slideCount )+ 'px';
+  const newWidth = (slideWidth + slideMargin) * slideCount - slideMargin + 'px';
   container.style.width = newWidth;
 }
+function moveSlide(num) {
+  elemSlideContainer.style.left = -num * 355 + 'px';
+  elemCurentIndex = num;
+}
+// //슬라이드 너비 구하기
+
+// 오른쪽 이동
+function elemNext() {
+  if (elemCurentIndex < elemSlideCount - 4) {
+    moveSlide(elemCurentIndex + 1);
+    console.log(elemCurentIndex);
+  } else {
+    moveSlide(0);
+  }
+}
+// 왼쪽 이동
+function elemPrev() {
+  if (elemCurentIndex > 0) {
+    moveSlide(elemCurentIndex - 1);
+  } else {
+  }
+}
+elemNextBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  elemNext();
+});
+elemPrevBtn.addEventListener('click', (e) => {
+  e.preventDefault();
+  elemPrev();
+});
+// //이동 함수
+
+// elemNextBtn.addEventListener('click', (e) => {
+//   e.preventDefault();
+//   if (elemCurentIndex < elemSlideCount - 4) {
+//     moveSlide(elemCurentIndex + 1);
+//     console.log(elemCurentIndex);
+//   } else {
+//     moveSlide(0);
+//   }
+// });
 updataWidth(elemSlide, elemSlideContainer);
-updataWidth(BSlide, BSlideContainer);
 
 let pressed = false;
 let startX;
@@ -248,20 +289,19 @@ let x;
 function slide(wrap, container) {
   wrap.addEventListener('mousedown', (e) => {
     pressed = true;
-    startX = e.offsetX - container.offsetLeft;
+    startX = e.clientX - container.offsetLeft;
+    console.log(e.offsetX);
+    elemSlideContainer.classList.remove('elem-slide-animated');
   });
-  wrap.addEventListener('touchstart', (e) => {
-    pressed = true;
-    startX = e.offsetX - container.offsetLeft;
-  });
-  wrap.addEventListener('mouseenter', () => {});
-  wrap.addEventListener('mouseup', () => {});
   wrap.addEventListener('mouseup', () => {
     pressed = false;
+    elemSlideContainer.classList.add('elem-slide-animated');
   });
-  wrap.addEventListener('touchend', () => {
+  wrap.addEventListener('mouseleave', () => {
     pressed = false;
+    elemSlideContainer.classList.add('elem-slide-animated');
   });
+
   wrap.addEventListener('mousemove', (e) => {
     if (!pressed) return;
     e.preventDefault();
@@ -281,7 +321,23 @@ function slide(wrap, container) {
     }
   }
 }
+let elemStartPoint = 0;
+let elemEndPoint = 0;
+elemSlideWrapper.addEventListener('mousedown', (e) => {
+  elemStartPoint = e.pageX;
+});
+elemSlideWrapper.addEventListener('mouseup', (e) => {
+  elemEndPoint = e.pageX;
+  if (elemStartPoint < elemEndPoint) {
+    elemPrev();
+  } else if (elemStartPoint > elemEndPoint) {
+    elemNext();
+  }
+});
+
 slide(elemSlideWrapper, elemSlideContainer);
-slide(BSlideWrapper, BSlideContainer);
 
 // //고객제안 슬라이드
+// const BSlideWrapper = document.querySelector('.bast-slides-wrap');
+// const BSlideContainer = document.querySelector('.bast-slide-container');
+// const BSlide = document.querySelectorAll('.bast-slide-container li');
