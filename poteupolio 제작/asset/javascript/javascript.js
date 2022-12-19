@@ -219,15 +219,15 @@ slideContainer.addEventListener('touchend', (e) => {
 });
 
 // 고객제안 슬라이드
-const elemSlideWrapper = document.querySelector('.elem-slides-view');
+const elemSlideView = document.querySelector('.elem-slides-view');
 const elemSlideContainer = document.querySelector('.element-slide-container');
 const elemSlide = document.querySelectorAll('.element-slide-container li');
-const elemPrevBtn = document.querySelector('.elem-prev');
-const elemNextBtn = document.querySelector('.elem-next');
 
 let elemSlideCount = elemSlide.length;
 let elemCurentIndex = 0;
 let slideWidth = elemSlide[0].clientWidth;
+let responsiveSlideView = 3;
+let moveAmt = slideWidth*slideCount
 let slideMargin = 20;
 
 // 슬라이드 너비 구하기
@@ -235,22 +235,50 @@ function updataWidth(elem, container) {
   const currentSlide = elem;
   const slideCount = currentSlide.length;
   let slideWidth = elem[0].clientWidth;
-  let slideMargin = 20;
+  let moveAmt = slideWidth*slideCount
 
-  const newWidth = (slideWidth + slideMargin) * slideCount - slideMargin + 'px';
+
+  const newWidth = moveAmt  + 'px';
   container.style.width = newWidth;
 }
-function moveSlide(num) {
-  elemSlideContainer.style.left = -num * 355 + 'px';
-  elemCurentIndex = num;
-}
-// //슬라이드 너비 구하기
+window.addEventListener("resize",()=>{
+resizeWidth()
+})
+window.addEventListener("load",()=>{
+  resizeWidth()
+})
+function resizeWidth(){
+  currentWidth = document.querySelector("body").offsetWidth;
+  if(currentWidth < 1580 && currentWidth > 960){
+    let slidesWidth = elemSlideView.offsetWidth-((responsiveSlideView-1)*slideMargin);
+    moveAmt = (slidesWidth/3);
+    elemSlide.forEach((i)=>{
+      i.style.width = moveAmt+"px";
+    })
+  }
+  else if(currentWidth<960){
+    let slidesWidth = elemSlideView.offsetWidth;
+    moveAmt = slidesWidth;
+    console.log(moveAmt)
+    elemSlide.forEach((i)=>{
+      i.style.width = moveAmt+"px";
+    })
 
+  }
+  updataWidth(elemSlide, elemSlideContainer)
+}
+
+// //슬라이드 너비 구하기
+function moveSlide(num) {
+  elemSlideContainer.style.left = -(num * (moveAmt+ slideMargin ))+  'px';
+  elemCurentIndex = num;
+
+}
+updataWidth(elemSlide, elemSlideContainer);
 // 오른쪽 이동
 function elemNext() {
   if (elemCurentIndex < elemSlideCount - 4) {
     moveSlide(elemCurentIndex + 1);
-    console.log(elemCurentIndex);
   } else {
     moveSlide(0);
   }
@@ -262,14 +290,6 @@ function elemPrev() {
   } else {
   }
 }
-elemNextBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  elemNext();
-});
-elemPrevBtn.addEventListener('click', (e) => {
-  e.preventDefault();
-  elemPrev();
-});
 // //이동 함수
 
 // elemNextBtn.addEventListener('click', (e) => {
@@ -281,28 +301,27 @@ elemPrevBtn.addEventListener('click', (e) => {
 //     moveSlide(0);
 //   }
 // });
-updataWidth(elemSlide, elemSlideContainer);
+
 
 let pressed = false;
 let startX;
 let x;
-function slide(wrap, container) {
-  wrap.addEventListener('mousedown', (e) => {
+function dragSlide(view, container) {
+  view.addEventListener('mousedown', (e) => {
     pressed = true;
     startX = e.clientX - container.offsetLeft;
-    console.log(e.offsetX);
     elemSlideContainer.classList.remove('elem-slide-animated');
   });
-  wrap.addEventListener('mouseup', () => {
+  view.addEventListener('mouseup', () => {
     pressed = false;
     elemSlideContainer.classList.add('elem-slide-animated');
   });
-  wrap.addEventListener('mouseleave', () => {
+  view.addEventListener('mouseleave', () => {
     pressed = false;
     elemSlideContainer.classList.add('elem-slide-animated');
   });
 
-  wrap.addEventListener('mousemove', (e) => {
+  view.addEventListener('mousemove', (e) => {
     if (!pressed) return;
     e.preventDefault();
     x = e.offsetX;
@@ -311,7 +330,7 @@ function slide(wrap, container) {
     checkboundary();
   });
   function checkboundary() {
-    let outer = wrap.getBoundingClientRect();
+    let outer = view.getBoundingClientRect();
     let inner = container.getBoundingClientRect();
 
     if (parseInt(container.style.left) > 0) {
@@ -320,23 +339,26 @@ function slide(wrap, container) {
       container.style.left = `0px`;
     }
   }
+
+  let elemEndPoint = 0;
+  elemSlideView.addEventListener('mousedown', (e) => {
+    elemStartPoint = e.pageX;
+  });
+  elemSlideView.addEventListener('mouseup', (e) => {
+    elemEndPoint = e.pageX;
+    if (elemStartPoint < elemEndPoint) {
+      elemPrev();
+    } else if (elemStartPoint > elemEndPoint) {
+      elemNext();
+    }
+  });
 }
 let elemStartPoint = 0;
-let elemEndPoint = 0;
-elemSlideWrapper.addEventListener('mousedown', (e) => {
-  elemStartPoint = e.pageX;
-});
-elemSlideWrapper.addEventListener('mouseup', (e) => {
-  elemEndPoint = e.pageX;
-  if (elemStartPoint < elemEndPoint) {
-    elemPrev();
-  } else if (elemStartPoint > elemEndPoint) {
-    elemNext();
-  }
-});
 
-slide(elemSlideWrapper, elemSlideContainer);
 
+dragSlide(elemSlideView, elemSlideContainer);
+
+// 반응형 레이아웃
 // //고객제안 슬라이드
 // const BSlideWrapper = document.querySelector('.bast-slides-wrap');
 // const BSlideContainer = document.querySelector('.bast-slide-container');
