@@ -4,7 +4,7 @@ const navMenuCategoryContainer = document.querySelector(
 );
 
 function navOver() {
-  navMenuCategoryContainer.style.height = '450px';
+  navMenuCategoryContainer.style.height = '430px';
 }
 function navOuth() {
   navMenuCategoryContainer.style.height = '0';
@@ -229,13 +229,14 @@ const BSlide = document.querySelectorAll('.bast-slide-container li');
 
 const elemSlideCount = elemSlide.length;
 
+// 슬라이드 너비 구하기
 function updataWidth(elem, container) {
   const currentSlide = elem;
   const slideCount = currentSlide.length;
   let slideWidth = elem[0].clientWidth;
+  let slideMargin = 20
 
-  const newWidth = slideWidth * slideCount + 'px';
-
+  const newWidth = ((slideWidth + slideMargin) * slideCount )+ 'px';
   container.style.width = newWidth;
 }
 updataWidth(elemSlide, elemSlideContainer);
@@ -276,7 +277,7 @@ function slide(wrap, container) {
     if (parseInt(container.style.left) > 0) {
       container.style.left = '0px';
     } else if (inner.right < outer.right) {
-      container.style.left = `-${inner.width - outer.width}px`;
+      container.style.left = `0px`;
     }
   }
 }
