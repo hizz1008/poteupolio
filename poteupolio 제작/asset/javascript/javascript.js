@@ -227,7 +227,8 @@ let elemSlideCount = elemSlide.length;
 let elemCurentIndex = 0;
 let slideWidth = elemSlide[0].clientWidth;
 let responsiveSlideView = 3;
-let moveAmt = slideWidth*slideCount
+let moveAmt = slideWidth * slideCount;
+
 let slideMargin = 20;
 
 // 슬라이드 너비 구하기
@@ -235,44 +236,47 @@ function updataWidth(elem, container) {
   const currentSlide = elem;
   const slideCount = currentSlide.length;
   let slideWidth = elem[0].clientWidth;
-  let moveAmt = slideWidth*slideCount
-
-
-  const newWidth = moveAmt  + 'px';
+  let moveAmt = slideWidth * slideCount;
+  const newWidth = moveAmt + 'px';
   container.style.width = newWidth;
 }
-window.addEventListener("resize",()=>{
-resizeWidth()
-})
-window.addEventListener("load",()=>{
-  resizeWidth()
-})
-function resizeWidth(){
-  currentWidth = document.querySelector("body").offsetWidth;
-  if(currentWidth < 1580 && currentWidth > 960){
-    let slidesWidth = elemSlideView.offsetWidth-((responsiveSlideView-1)*slideMargin);
-    moveAmt = (slidesWidth/3);
-    elemSlide.forEach((i)=>{
-      i.style.width = moveAmt+"px";
-    })
-  }
-  else if(currentWidth<960){
+window.addEventListener('resize', () => {
+  resizeWidth();
+});
+window.addEventListener('load', () => {
+  resizeWidth();
+});
+function resizeWidth() {
+  currentWidth = document.querySelector('body').offsetWidth;
+  if (currentWidth > 1500) {
+    let slidesWidth = 335;
+    moveAmt = slideWidth;
+    elemSlide.forEach((i) => {
+      i.style.width = slidesWidth + 'px';
+    });
+  } else if (currentWidth < 1580 && currentWidth > 960) {
+    let slidesWidth =
+      elemSlideView.offsetWidth - (responsiveSlideView - 1) * slideMargin;
+    moveAmt = slidesWidth / 3;
+    elemSlide.forEach((i) => {
+      i.style.width = moveAmt + 'px';
+    });
+  } else if (currentWidth < 960) {
     let slidesWidth = elemSlideView.offsetWidth;
     moveAmt = slidesWidth;
-    console.log(moveAmt)
-    elemSlide.forEach((i)=>{
-      i.style.width = moveAmt+"px";
-    })
-
+    elemSlide.forEach((i) => {
+      i.style.width = moveAmt + 'px';
+    });
   }
-  updataWidth(elemSlide, elemSlideContainer)
+
+  updataWidth(elemSlide, elemSlideContainer);
 }
 
 // //슬라이드 너비 구하기
-function moveSlide(num) {
-  elemSlideContainer.style.left = -(num * (moveAmt+ slideMargin ))+  'px';
-  elemCurentIndex = num;
 
+function moveSlide(num) {
+  elemSlideContainer.style.left = -(num * (moveAmt + slideMargin)) + 'px';
+  elemCurentIndex = num;
 }
 updataWidth(elemSlide, elemSlideContainer);
 // 오른쪽 이동
@@ -281,13 +285,13 @@ function elemNext() {
     moveSlide(elemCurentIndex + 1);
   } else {
     moveSlide(0);
+    elemSlideContainer.style.left = 0;
   }
 }
 // 왼쪽 이동
 function elemPrev() {
   if (elemCurentIndex > 0) {
     moveSlide(elemCurentIndex - 1);
-  } else {
   }
 }
 // //이동 함수
@@ -301,7 +305,6 @@ function elemPrev() {
 //     moveSlide(0);
 //   }
 // });
-
 
 let pressed = false;
 let startX;
@@ -325,21 +328,23 @@ function dragSlide(view, container) {
     if (!pressed) return;
     e.preventDefault();
     x = e.offsetX;
-
     container.style.left = `${x - startX}px`;
     checkboundary();
   });
+
+  // 슬라이드뷰가 화면을 넘어가지 않게 하기 위한 함수
   function checkboundary() {
     let outer = view.getBoundingClientRect();
     let inner = container.getBoundingClientRect();
-
     if (parseInt(container.style.left) > 0) {
       container.style.left = '0px';
     } else if (inner.right < outer.right) {
       container.style.left = `0px`;
     }
   }
+  // //슬라이드뷰가 화면을 넘어가지 않게 하기 위한 함수
 
+  let elemStartPoint = 0;
   let elemEndPoint = 0;
   elemSlideView.addEventListener('mousedown', (e) => {
     elemStartPoint = e.pageX;
@@ -353,10 +358,11 @@ function dragSlide(view, container) {
     }
   });
 }
-let elemStartPoint = 0;
-
 
 dragSlide(elemSlideView, elemSlideContainer);
+elemSlideView.addEventListener('touchmove', () => {
+  console.log('앵냉');
+});
 
 // 반응형 레이아웃
 // //고객제안 슬라이드
