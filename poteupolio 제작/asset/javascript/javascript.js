@@ -3,15 +3,15 @@ const navMenuCategoryContainer = document.querySelector(
   '.nav_menu-category-container'
 );
 
-function navOver() {
-  navMenuCategoryContainer.style.height = '430px';
-}
-function navOuth() {
-  navMenuCategoryContainer.style.height = '0';
-}
-navMenuCategory.addEventListener('mouseover', navOver);
-navMenuCategory.addEventListener('mouseout', navOuth);
-//네비 호버
+// function navOver() {
+//   navMenuCategoryContainer.style.height = '430px';
+// }
+// function navOuth() {
+//   navMenuCategoryContainer.style.height = '0';
+// }
+// navMenuCategory.addEventListener('mouseover', navOver);
+// navMenuCategory.addEventListener('mouseout', navOuth);
+// //네비 호버
 
 // 로그인 유저 버튼
 const headerUser = document.querySelector('.header_user');
@@ -225,13 +225,21 @@ const elemSlide = document.querySelectorAll('.element-slide-container li');
 
 let elemSlideCount = elemSlide.length;
 let elemCurentIndex = 0;
+
+const bastSlideView = document.querySelector('.bast-slides-view');
+const bastSlideContainer = document.querySelector('.bast-slide-container');
+const bastSlide = document.querySelectorAll('.bast-slide-container li');
+
+let bastSlideCount = bastSlide.length;
+let bastCurentIndex = 0;
+
 let slideWidth = elemSlide[0].clientWidth;
 let responsiveSlideView = 3;
 let moveAmt = slideWidth * slideCount;
 
 let slideMargin = 20;
 
-// 슬라이드 너비 구하기
+// 슬라이드 요소 너비 구하기
 function updataWidth(elem, container) {
   const currentSlide = elem;
   const slideCount = currentSlide.length;
@@ -241,59 +249,101 @@ function updataWidth(elem, container) {
   container.style.width = newWidth;
 }
 window.addEventListener('resize', () => {
-  resizeWidth();
+  resizeWidth(elemSlide, elemSlideView);
+  resizeWidth(bastSlide, bastSlideView);
 });
 window.addEventListener('load', () => {
-  resizeWidth();
+  resizeWidth(elemSlide, elemSlideView);
+  resizeWidth(bastSlide, bastSlideView);
 });
-function resizeWidth() {
+function resizeWidth(elem, slideView) {
   currentWidth = document.querySelector('body').offsetWidth;
   if (currentWidth > 1500) {
     let slidesWidth = 335;
     moveAmt = slideWidth;
-    elemSlide.forEach((i) => {
+    elem.forEach((i) => {
       i.style.width = slidesWidth + 'px';
     });
-  } else if (currentWidth < 1580 && currentWidth > 960) {
+  } else if (currentWidth < 1580 && currentWidth > 660) {
     let slidesWidth =
-      elemSlideView.offsetWidth - (responsiveSlideView - 1) * slideMargin;
+      slideView.offsetWidth - (responsiveSlideView - 1) * slideMargin;
     moveAmt = slidesWidth / 3;
-    elemSlide.forEach((i) => {
+    elem.forEach((i) => {
       i.style.width = moveAmt + 'px';
     });
-  } else if (currentWidth < 960) {
-    let slidesWidth = elemSlideView.offsetWidth;
+  } else if (currentWidth < 660) {
+    let slidesWidth = slideView.offsetWidth;
     moveAmt = slidesWidth;
-    elemSlide.forEach((i) => {
+    elem.forEach((i) => {
       i.style.width = moveAmt + 'px';
     });
   }
 
   updataWidth(elemSlide, elemSlideContainer);
+  updataWidth(bastSlide, bastSlideContainer);
 }
 
 // //슬라이드 너비 구하기
 
-function moveSlide(num) {
-  elemSlideContainer.style.left = -(num * (moveAmt + slideMargin)) + 'px';
+// 드래그 이동
+function moveSlide(num, slideContainer) {
+  slideContainer.style.left = -(num * (moveAmt + slideMargin)) + 'px';
   elemCurentIndex = num;
 }
-updataWidth(elemSlide, elemSlideContainer);
+
 // 오른쪽 이동
-function elemNext() {
-  if (elemCurentIndex < elemSlideCount - 4) {
-    moveSlide(elemCurentIndex + 1);
+function elemNext(currentIndex, slideCount) {
+  if (currentWidth > 1500 && currentIndex < slideCount - 4) {
+    moveSlide(currentIndex + 1, elemSlideContainer);
+  } else if (
+    currentWidth < 1580 &&
+    currentWidth > 660 &&
+    currentIndex < slideCount - 3
+  ) {
+    moveSlide(currentIndex + 1, elemSlideContainer);
+  } else if (currentWidth < 660 && currentIndex < slideCount - 1) {
+    moveSlide(currentIndex + 1, elemSlideContainer);
   } else {
-    moveSlide(0);
+    moveSlide(0, elemSlideContainer);
+
     elemSlideContainer.style.left = 0;
   }
 }
 // 왼쪽 이동
-function elemPrev() {
-  if (elemCurentIndex > 0) {
-    moveSlide(elemCurentIndex - 1);
+function elemPrev(currentIndex) {
+  if (currentIndex > 0) {
+    moveSlide(currentIndex - 1, elemSlideContainer);
   }
 }
+
+function moveBastSlide(num, slideContainer) {
+  slideContainer.style.left = -(num * (moveAmt + slideMargin)) + 'px';
+  bastCurentIndex = num;
+}
+// 베스트셀러 오른쪽 이동
+function bastNext(currentIndex, slideCount) {
+  if (currentWidth > 1500 && currentIndex < slideCount - 4) {
+    moveBastSlide(currentIndex + 1, bastSlideContainer);
+  } else if (
+    currentWidth < 1580 &&
+    currentWidth > 660 &&
+    currentIndex < slideCount - 3
+  ) {
+    moveBastSlide(currentIndex + 1, bastSlideContainer);
+  } else if (currentWidth < 660 && currentIndex < slideCount - 1) {
+    moveBastSlide(currentIndex + 1, bastSlideContainer);
+  } else {
+    moveBastSlide(0, bastSlideContainer);
+    bastSlideContainer.style.left = 0;
+  }
+}
+// 베스트셀러 왼쪽 이동
+function elemPrev(currentIndex) {
+  if (currentIndex > 0) {
+    moveSlide(currentIndex - 1, bastSlideContainer);
+  }
+}
+
 // //이동 함수
 
 // elemNextBtn.addEventListener('click', (e) => {
@@ -306,22 +356,23 @@ function elemPrev() {
 //   }
 // });
 
-let pressed = false;
-let startX;
-let x;
+// 드래그로 이동하는 상황을 보여주는 함수
 function dragSlide(view, container) {
+  let pressed = false;
+  let startX;
+  let x;
   view.addEventListener('mousedown', (e) => {
     pressed = true;
     startX = e.clientX - container.offsetLeft;
-    elemSlideContainer.classList.remove('elem-slide-animated');
+    container.classList.remove('elem-slide-animated');
   });
   view.addEventListener('mouseup', () => {
     pressed = false;
-    elemSlideContainer.classList.add('elem-slide-animated');
+    container.classList.add('elem-slide-animated');
   });
   view.addEventListener('mouseleave', () => {
     pressed = false;
-    elemSlideContainer.classList.add('elem-slide-animated');
+    container.classList.add('elem-slide-animated');
   });
 
   view.addEventListener('mousemove', (e) => {
@@ -329,43 +380,61 @@ function dragSlide(view, container) {
     e.preventDefault();
     x = e.offsetX;
     container.style.left = `${x - startX}px`;
-    checkboundary();
   });
 
   // 슬라이드뷰가 화면을 넘어가지 않게 하기 위한 함수
-  function checkboundary() {
-    let outer = view.getBoundingClientRect();
-    let inner = container.getBoundingClientRect();
-    if (parseInt(container.style.left) > 0) {
-      container.style.left = '0px';
-    } else if (inner.right < outer.right) {
-      container.style.left = `0px`;
-    }
-  }
+  // function checkboundary() {
+  //   let outer = view.getBoundingClientRect();
+  //   let inner = container.getBoundingClientRect();
+  //   if (parseInt(container.style.left) > 0) {
+  //     container.style.left = '0px';
+  //   } else if (inner.right < outer.right) {
+  //     container.style.left = `0px`;
+  //   }
+  // }
   // //슬라이드뷰가 화면을 넘어가지 않게 하기 위한 함수
+}
+// //드래그로 이동하는 상황을 보여주는 함수
 
+// 드래그 시 허용된 범위 만큼 이동하는 함수
+function dragMove(view) {
   let elemStartPoint = 0;
   let elemEndPoint = 0;
-  elemSlideView.addEventListener('mousedown', (e) => {
+  view.addEventListener('mousedown', (e) => {
     elemStartPoint = e.pageX;
   });
-  elemSlideView.addEventListener('mouseup', (e) => {
+  view.addEventListener('mouseup', (e) => {
     elemEndPoint = e.pageX;
     if (elemStartPoint < elemEndPoint) {
-      elemPrev();
+      elemPrev(elemCurentIndex);
     } else if (elemStartPoint > elemEndPoint) {
-      elemNext();
+      elemNext(elemCurentIndex, elemSlideCount);
     }
   });
 }
+// //드래그 시 허용된 범위 만큼 이동하는 함수
+dragMove(elemSlideView);
+// 드래그 시 허용된 범위 만큼 이동하는 함수
+function dragMoveTwo(view) {
+  let bastStartPoint = 0;
+  let bastEndPoint = 0;
+  view.addEventListener('mousedown', (e) => {
+    bastStartPoint = e.pageX;
+  });
+  view.addEventListener('mouseup', (e) => {
+    bastEndPoint = e.pageX;
+    if (bastStartPoint < bastEndPoint) {
+      bastPrev(bastCurentIndex);
+    } else if (bastStartPoint > bastEndPoint) {
+      bastNext(bastCurentIndex, bastSlideCount);
+    }
+  });
+}
+// //드래그 시 허용된 범위 만큼 이동하는 함수
+dragMoveTwo(bastSlideView);
 
 dragSlide(elemSlideView, elemSlideContainer);
-elemSlideView.addEventListener('touchmove', () => {
-  console.log('앵냉');
-});
+dragSlide(bastSlideView, bastSlideContainer);
 
 // 반응형 레이아웃
 // //고객제안 슬라이드
-// const BSlideWrapper = document.querySelector('.bast-slides-wrap');
-// const BSlideContainer = document.querySelector('.bast-slide-container');
-// const BSlide = document.querySelectorAll('.bast-slide-container li');
