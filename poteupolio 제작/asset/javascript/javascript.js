@@ -3,15 +3,15 @@ const navMenuCategoryContainer = document.querySelector(
   '.nav_menu-category-container'
 );
 
-// function navOver() {
-//   navMenuCategoryContainer.style.height = '430px';
-// }
-// function navOuth() {
-//   navMenuCategoryContainer.style.height = '0';
-// }
-// navMenuCategory.addEventListener('mouseover', navOver);
-// navMenuCategory.addEventListener('mouseout', navOuth);
-// //네비 호버
+function navOver() {
+  navMenuCategoryContainer.style.height = '430px';
+}
+function navOuth() {
+  navMenuCategoryContainer.style.height = '0';
+}
+navMenuCategory.addEventListener('mouseover', navOver);
+navMenuCategory.addEventListener('mouseout', navOuth);
+//네비 호버
 
 // 로그인 유저 버튼
 const headerUser = document.querySelector('.header_user');

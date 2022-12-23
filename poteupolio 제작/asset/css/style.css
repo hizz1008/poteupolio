@@ -202,7 +202,12 @@
 .active {
   background-color: #fff;
 }
-.inactive {
+.inactive-left {
+  box-shadow: 0px -30px 30px 1px rgba(150, 150, 150, 0.4) inset;
+  background: #dadada;
+  border-radius: 0 0 10px 0;
+}
+.inactive-right {
   box-shadow: 0px -30px 30px 1px rgba(150, 150, 150, 0.4) inset;
   background: #dadada;
 }
@@ -812,7 +817,7 @@
   padding: 10px 0;
 }
 #tablet-menu-bar a i {
-  font-size: 25px;
+  font-size: 20px;
 }
 /* 미디어 쿼리 */
 @media (max-width: 1500px) {
@@ -896,6 +901,9 @@
   #tablet-menu-bar {
     display: flex;
   }
+  .footer-bottom {
+    margin-bottom: 61px;
+  }
 }
 @media (max-width: 960px) {
   .next,
@@ -916,7 +924,6 @@
 }
 @media (max-width: 768px) {
   .banner-col1 img {
-    height: 400px;
   }
   .banner-2 img {
     height: 190px;
@@ -967,12 +974,12 @@
   }
   .banner-col1 {
     margin-right: 0;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
   }
   .banner-col2 {
     margin-bottom: 0;
-    margin-right: 20px;
-    width: 70%;
+    margin-right: 10px;
+    width: 60%;
   }
   .banner-col3 .img-nomal {
     display: none;

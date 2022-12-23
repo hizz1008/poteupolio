@@ -1,0 +1,32 @@
+.col3 {
+  width: 100%;
+}
+.login-wrap {
+  position: relative;
+  width: 100%;
+}
+.int-area-sign-up {
+  margin-bottom: 10px;
+}
+
+.lc-sign-up {
+  margin-bottom: 10px;
+  text-align: start;
+}
+.lh-check-sign-up {
+  text-align: start;
+  position: relative;
+}
+.ic-sign-up {
+  position: relative;
+}
+.lh-check-sign-up:last-child {
+  top: 40px;
+}
+.lh-check-sign-up label {
+  line-height: 1.5;
+}
+.lf-sign-up {
+  margin-top: 0px;
+  margin-bottom: 60px;
+}

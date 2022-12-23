@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="asset/css/style.css" />
+    <link rel="stylesheet" href="asset/css/user.css" />
+    <link rel="stylesheet" href="asset/css/reset.css" />
+    <title>trekkINN</title>
+  </head>
+  <body>
+    <header id="header">
+        <div class="container">
+          <div class="header_contents">
+          <div class="col1">
+            <h1 class="header_logo">
+              <a href="index.html">
+                <figure>
+                  <img src="./asset/img/page-logo/trekkinn.svg" alt="terkk INN" />
+                  <figcaption class="ir_su">아웃도어매장 by trandeinn</figcaption>
+                </figure>
+              </a>
+            </div>
+          </div>
+          <!-- //header_contents -->
+        </div>
+
+      </header>
+    <div class="col3">
+      <!-- 로그인 -->
+      <div class="login-wrap">
+        <h4 class="ir_su">로그인 정보</h4>
+        <div class="login-wrap_login">
+          <div class="login-header">
+            <ul>
+              <li class="btn-left">
+                <a href="#">로그인</a>
+                <ul>
+                  <li class="loginView">
+                    <form id="login-form" name="login-form" action="post">
+                      <fieldset>
+                        <legend class="ir_su">로그인 및 관련설정</legend>
+                        <div class="login-content">
+                          <h5 class="ir_su">로그인 영역</h5>
+                          <div class="int-area">
+                            <input
+                              type="text"
+                              id="user-id"
+                              name="user-id"
+                              maxlength="20"
+                              placeholder="아이디"
+                            />
+                          </div>
+                          <div class="int-area">
+                            <input
+                              type="password"
+                              id="user-pw"
+                              name="user-pw"
+                              maxlength="20"
+                              placeholder="비밀번호"
+                            />
+                          </div>
+                          <div class="lh_check">
+                            <input
+                              type="checkbox"
+                              id="infor_check"
+                              class="input_check"
+                            />
+                            <label for="infor_check">로그인 상태 유지</label>
+                            <a href="#"
+                              ><strong>비밀번호를 잊으셨나요?</strong></a
+                            >
+                          </div>
+                        </div>
+                        <div class="login-footer">
+                          <div class="btn-area">
+                            <button type="submit">로그인</button>
+                            <div class="login-terms">
+                              <p>
+                                데이터 컨트롤러인 Tradeinn Retail Services는
+                                주문을 관리하고 처리하기 위해 데이터를
+                                처리합니다. 귀하는 당사의 개인정보취급방침에
+                                있는 데이터 보호에 대한 추가 및 세부 정보를
+                                참조하여 데이터에 대한 액세스, 수정 및 삭제를
+                                비롯한 기타 권리를 행사할 수 있습니다.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      </fieldset>
+                    </form>
+                  </li>
+                </ul>
+              </li>
+              <li class="btn-right inactive-right">
+                <a href="#">회원가입</a>
+                <ul>
+                    <li class="hide signView">
+                      <form id="login-form" name="login-form" action="post">
+                        <fieldset>
+                          <legend class="ir_su">로그인 및 관련설정</legend>
+                          <div class="login-content ">
+                            <h5 class="ir_su">로그인 영역</h5>
+                            <div class="int-area">
+                              <input
+                                type="text"
+                                id="user-id"
+                                name="newUser-id"
+                                maxlength="20"
+                                placeholder="이름"
+                              />
+                            </div>
+                            <div class="int-area">
+                                <input
+                                  type="text"
+                                  id="user-id"
+                                  name="newUser-name"
+                                  maxlength="20"
+                                  placeholder="성함"
+                                />
+                              </div>
+                              <div class="int-area">
+                                <input
+                                  type="text"
+                                  id="user-id"
+                                  name="newUser-mali"
+                                  maxlength="20"
+                                  placeholder="이메일"
+                                />
+                              </div>
+                              <div class="int-area">
+                                <input
+                                  type="text"
+                                  id="user-id"
+                                  name="newUser-mali"
+                                  maxlength="20"
+                                  placeholder="이메일 반복"
+                                />
+                              </div>
+                              <div class="int-area">
+                                <input
+                                  type="password"
+                                  id="user-pw"
+                                  name="newUser-pw"
+                                  maxlength="20"
+                                  placeholder="비밀번호"
+                                />
+                              </div>
+                              <h6 class="lc-sign-up">* 비밀번호는 최소 6자 이어야 합니다</h6>
+                            <div class="int-area int-area-sign-up">
+                              <input
+                                type="password"
+                                id="user-pw"
+                                name="newUser-pw"
+                                maxlength="20"
+                                placeholder="비밀번호 확인"
+                              />
+                            </div>
+                            <div class="lh_check lh-check-sign-up">
+                              <input
+                                type="checkbox"
+                                id="infor_check"
+                                class="input_check ic-sign-up"
+                              />
+                              <label for="infor_check">나는 내 주문을 관리하기 위한 내 데이터 처리에 대한 개인정보취급방침에 포함된 조건을 읽고 동의합니다</label>
+                              
+                              <div class="lh_check">
+                                <input
+                                  type="checkbox"
+                                  id="infor_check"
+                                  class="input_check ic-sign-up"
+                                />
+                              <label for="infor_check">단독 할인 판매 관련 뉴스레터를 받아보고 싶습니다</label>
+
+                            </div>
+                          </div>
+                          <div class="login-footer lf-sign-up">
+                            <div class="btn-area">
+                              <button type="submit">계정 만들기</button>
+                              <div class="login-terms">
+                                <p>
+                                  데이터 컨트롤러인 Tradeinn Retail Services는
+                                  주문을 관리하고 처리하기 위해 데이터를
+                                  처리합니다. 귀하는 당사의 개인정보취급방침에
+                                  있는 데이터 보호에 대한 추가 및 세부 정보를
+                                  참조하여 데이터에 대한 액세스, 수정 및 삭제를
+                                  비롯한 기타 권리를 행사할 수 있습니다.
+                                </p>
+                              </div>
+                            </div>
+                          </div>
+                        </fieldset>
+                      </form>
+                    </li>
+                  </ul>
+            </li>
+              <li class="btn-cencel">
+                <a href="index.html"><i class="fa-solid fa-xmark"></i></a>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="sign-up-wrap">
+          <h4 class="ir_su">회원가입 정보</h4>
+        </div>
+      </div>
+      <!-- 로그인 -->
+    </div>
+    <div id="tablet-menu-bar">
+      <a href="category.html">
+        <div class="tablet-menu-icon">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <h3>카테고리</h3>
+        </div>
+      </a>
+      <a href="index.html">
+        <div class="tablet-menu-icon">
+          <i class="fa-solid fa-house"></i>
+          <h3>홈</h3>
+        </div>
+      </a>
+      <a href="user.html">
+        <div class="tablet-menu-icon">
+          <i class="fa-solid fa-user"></i>
+          <h3>마이</h3>
+        </div>
+      </a>
+    </div>
+    <script src="./asset/javascript/user.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <script
+      src="https://kit.fontawesome.com/e8e74eadbe.js"
+      crossorigin="anonymous"
+    ></script>
+  </body>
+</html>
