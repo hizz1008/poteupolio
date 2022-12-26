@@ -912,6 +912,7 @@
   }
   .banner-container a h2 {
     font-size: 15px;
+    white-space: nowrap;
   }
   .container,
   .element-slide,
