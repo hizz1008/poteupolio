@@ -366,6 +366,7 @@ function dragSlide(view, container) {
     startX = e.clientX - container.offsetLeft;
     container.classList.remove('elem-slide-animated');
   });
+
   view.addEventListener('mouseup', () => {
     pressed = false;
     container.classList.add('elem-slide-animated');
@@ -408,7 +409,7 @@ function dragMove(view) {
     if (elemStartPoint < elemEndPoint) {
       elemPrev(elemCurentIndex);
     } else if (elemStartPoint > elemEndPoint) {
-      elemNext(elemCurentIndex, elemSlideCount);
+      elemCurentIndex, elemSlideCount;
     }
   });
 }
@@ -438,3 +439,55 @@ dragSlide(bastSlideView, bastSlideContainer);
 
 // 반응형 레이아웃
 // //고객제안 슬라이드
+
+// 고객제안 슬라이드 모바일
+let curpos = 0;
+let position = 0;
+let mStartX, mEndX;
+
+const mslideWidth = elemSlideContainer.clientWidth + 20;
+
+elemSlideView.addEventListener('touchstart', touchStart);
+elemSlideView.addEventListener('touchend', touchEnd);
+
+function mPrev(slideContainer) {
+  if (curpos > 0) {
+    position += mslideWidth;
+    slideContainer.style.left = `${position}px`;
+    curpos = curpos - 1;
+  }
+}
+
+function mNext(slideContainer) {
+  if (curpos < elemSlideCount - 1) {
+    position -= mslideWidth;
+    slideContainer.style.left = `${position}px`;
+    curpos = curpos + 1;
+  }
+}
+function touchStart(e) {
+  mStartX = e.touches[0].pageX;
+}
+function touchEnd(e) {
+  mEndX = e.changedTouches[0].pageX;
+  if (mStartX > mEndX) {
+    mNext(elemSlideContainer);
+  } else {
+    mPrev(elemSlideContainer);
+  }
+}
+
+bastSlideView.addEventListener('touchstart', BtouchStart);
+bastSlideView.addEventListener('touchend', BtouchEnd);
+
+function BtouchStart(e) {
+  mStartX = e.touches[0].pageX;
+}
+function BtouchEnd(e) {
+  mEndX = e.changedTouches[0].pageX;
+  if (mStartX > mEndX) {
+    mNext(bastSlideContainer);
+  } else {
+    mPrev(bastSlideContainer);
+  }
+}
