@@ -338,7 +338,7 @@ function bastNext(currentIndex, slideCount) {
   }
 }
 // 베스트셀러 왼쪽 이동
-function elemPrev(currentIndex) {
+function bastPrev(currentIndex) {
   if (currentIndex > 0) {
     moveSlide(currentIndex - 1, bastSlideContainer);
   }
@@ -409,7 +409,7 @@ function dragMove(view) {
     if (elemStartPoint < elemEndPoint) {
       elemPrev(elemCurentIndex);
     } else if (elemStartPoint > elemEndPoint) {
-      elemCurentIndex, elemSlideCount;
+      elemNext(elemCurentIndex, elemSlideCount);
     }
   });
 }
